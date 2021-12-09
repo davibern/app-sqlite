@@ -17,7 +17,6 @@ public class QueryUserActivity extends AppCompatActivity {
 
     private EditText edtQueryID, edtNameQuery, edtPhoneQuery;
     private Button btnSearchQuery, btnUpdateQuery, btnDeleteQuery;
-    // Object to connect with the database
     ConectionSQLiteHelper conn;
 
     @Override
@@ -25,7 +24,6 @@ public class QueryUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query_user);
 
-        // Object with the connection
         conn = new ConectionSQLiteHelper(getApplicationContext(), "bd_users", null, 1);
 
         edtQueryID = findViewById(R.id.edtQueryID);
@@ -52,7 +50,7 @@ public class QueryUserActivity extends AppCompatActivity {
         btnDeleteQuery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                deleteUser();
             }
         });
 
@@ -69,6 +67,7 @@ public class QueryUserActivity extends AppCompatActivity {
             edtNameQuery.setText(cursor.getString(0));
             edtPhoneQuery.setText(cursor.getString(1));
             cursor.close();
+            db.close();
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "The user doesn't exist", Toast.LENGTH_SHORT).show();
             cleanFields();
@@ -85,6 +84,16 @@ public class QueryUserActivity extends AppCompatActivity {
         db.update(Utilities.TABLE_USER, values, Utilities.FIELD_ID + "=?", parameters);
         Toast.makeText(getApplicationContext(), "User updated", Toast.LENGTH_SHORT).show();
         db.close();
+    }
+
+    private void deleteUser() {
+        SQLiteDatabase db = conn.getWritableDatabase();
+        String[] parameters = {edtQueryID.getText().toString()};
+
+        db.delete(Utilities.TABLE_USER, Utilities.FIELD_ID + "=?", parameters);
+        cleanFields();
+        db.close();
+        Toast.makeText(getApplicationContext(), "User deleted", Toast.LENGTH_SHORT).show();
     }
 
     private void cleanFields() {
