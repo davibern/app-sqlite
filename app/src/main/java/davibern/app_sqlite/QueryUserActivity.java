@@ -2,6 +2,7 @@ package davibern.app_sqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -43,7 +44,7 @@ public class QueryUserActivity extends AppCompatActivity {
         btnUpdateQuery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                updateUser();
             }
         });
 
@@ -58,11 +59,8 @@ public class QueryUserActivity extends AppCompatActivity {
     }
 
     private void queryUser() {
-        // Object SQLite with the connection and mode (read)
         SQLiteDatabase db = conn.getReadableDatabase();
-        // Query about ID parameter
         String[] parameters = {edtQueryID.getText().toString()};
-        // Field that returns the query
         String[] fields = {Utilities.FIELD_NAME, Utilities.FIELD_PHONE};
 
         try {
@@ -75,6 +73,18 @@ public class QueryUserActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "The user doesn't exist", Toast.LENGTH_SHORT).show();
             cleanFields();
         }
+    }
+
+    private void updateUser() {
+        SQLiteDatabase db = conn.getWritableDatabase();
+        String[] parameters = {edtQueryID.getText().toString()};
+        ContentValues values = new ContentValues();
+        values.put(Utilities.FIELD_NAME, edtNameQuery.getText().toString());
+        values.put(Utilities.FIELD_PHONE, edtPhoneQuery.getText().toString());
+
+        db.update(Utilities.TABLE_USER, values, Utilities.FIELD_ID + "=?", parameters);
+        Toast.makeText(getApplicationContext(), "User updated", Toast.LENGTH_SHORT).show();
+        db.close();
     }
 
     private void cleanFields() {
