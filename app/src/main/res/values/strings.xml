@@ -7,4 +7,7 @@
     <string name="register_id">ID</string>
     <string name="register_name">Name</string>
     <string name="register_phone">Phone</string>
+    <string name="search">Search</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
 </resources>
