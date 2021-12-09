@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnRegisterActivity;
     private Button btnQueryUserActivity;
+    private Button btnQueryUserSpinnerActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRegisterActivity = findViewById(R.id.btnRegisterActivity);
         btnQueryUserActivity = findViewById(R.id.btnQueryUserActivity);
+        btnQueryUserSpinnerActivity = findViewById(R.id.btnQueryUserSpinnerActivity);
 
         btnRegisterActivity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnQueryUserSpinnerActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showQueryUserSpinnerActivity();
+            }
+        });
+
         ConectionSQLiteHelper conn = new ConectionSQLiteHelper(this, "bd_users", null, 1);
     }
 
@@ -44,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showQueryUserActivity() {
         Intent i = new Intent(this, QueryUserActivity.class);
+        startActivity(i);
+    }
+
+    private void showQueryUserSpinnerActivity() {
+        Intent i = new Intent(this, QueryUserSpinnerActivity.class);
         startActivity(i);
     }
 }
