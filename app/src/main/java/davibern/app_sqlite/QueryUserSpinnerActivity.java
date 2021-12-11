@@ -46,8 +46,8 @@ public class QueryUserSpinnerActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
                     txtIdQuery.setText(listUsers.get(position - 1).getId().toString());
-                    txtNamequery.setText(listUsers.get(position - 1).getId().toString());
-                    txtPhoneQuery.setText(listUsers.get(position - 1).getId().toString());
+                    txtNamequery.setText(listUsers.get(position - 1).getName().toString());
+                    txtPhoneQuery.setText(listUsers.get(position - 1).getPhone().toString());
                 } else {
                     txtIdQuery.setText("");
                     txtNamequery.setText("");
