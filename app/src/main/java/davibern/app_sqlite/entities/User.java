@@ -1,6 +1,8 @@
 package davibern.app_sqlite.entities;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     private Integer id;
     private String name;

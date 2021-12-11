@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App con SQLite</string>
+    <string name="app_name">App with SQLite</string>
     <string name="register_new_user">Register new User</string>
     <string name="query_user">Query a User</string>
     <string name="query_user_spinner">Query User with Spinner</string>

@@ -2,6 +2,7 @@ package davibern.app_sqlite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -44,6 +45,14 @@ public class QueryUserListViewActivity extends AppCompatActivity {
                 information += "Phone: " + listUsers.get(position).getPhone();
 
                 Toast.makeText(getApplicationContext(), information, Toast.LENGTH_SHORT).show();
+
+                User user = listUsers.get(position);
+
+                Intent i = new Intent(getApplicationContext(), UserDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("user", user);
+                i.putExtras(bundle);
+                startActivity(i);
             }
         });
     }
@@ -74,4 +83,5 @@ public class QueryUserListViewActivity extends AppCompatActivity {
             listUserInformation.add(listUsers.get(i).getId() + " - " + listUsers.get(i).getName());
         }
     }
+
 }
