@@ -11,4 +11,5 @@
     <string name="update">Update</string>
     <string name="delete">Delete</string>
     <string name="select_option">Select an option...</string>
+    <string name="detail_information">Detail User Information</string>
 </resources>

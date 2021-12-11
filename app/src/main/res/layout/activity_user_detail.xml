@@ -6,4 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".UserDetailActivity">
 
+    <TextView
+        android:id="@+id/txtViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/detail_information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="26sp"/>
+
+    <TextView
+        android:id="@+id/txtTitleId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/register_id"
+        app:layout_constraintEnd_toStartOf="@+id/txtDetailUserId"
+        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTitle"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtDetailUserId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="276dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewTitle" />
+
+    <TextView
+        android:id="@+id/txtTitleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/register_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleId"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtTitlePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/register_phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitleName"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/txtDetailUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/txtTitleName"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetailUserId" />
+
+    <TextView
+        android:id="@+id/txtDetailUserPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/txtTitlePhone"
+        app:layout_constraintTop_toBottomOf="@+id/txtDetailUserName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
