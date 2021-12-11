@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnRegisterActivity;
     private Button btnQueryUserActivity;
     private Button btnQueryUserSpinnerActivity;
+    private Button btnQueryUserListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
