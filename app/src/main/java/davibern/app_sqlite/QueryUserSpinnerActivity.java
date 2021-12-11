@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,6 +40,27 @@ public class QueryUserSpinnerActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listPersons);
         spnUser.setAdapter(adapter);
+
+        spnUser.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    txtIdQuery.setText(listUsers.get(position - 1).getId().toString());
+                    txtNamequery.setText(listUsers.get(position - 1).getId().toString());
+                    txtPhoneQuery.setText(listUsers.get(position - 1).getId().toString());
+                } else {
+                    txtIdQuery.setText("");
+                    txtNamequery.setText("");
+                    txtPhoneQuery.setText("");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
     private void queryListPersons() {
