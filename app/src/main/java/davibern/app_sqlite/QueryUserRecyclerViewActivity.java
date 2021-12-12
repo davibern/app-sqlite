@@ -32,7 +32,7 @@ public class QueryUserRecyclerViewActivity extends AppCompatActivity {
 
         queryListUsers();
 
-        AdapterUserData adapterUserData = new AdapterUserData(listUser);
+        AdapterUserData adapterUserData = new AdapterUserData(listUser, this);
         recyclerView.setAdapter(adapterUserData);
     }
 

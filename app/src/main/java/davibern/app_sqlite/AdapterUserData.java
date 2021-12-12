@@ -1,5 +1,8 @@
 package davibern.app_sqlite;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +17,13 @@ import davibern.app_sqlite.entities.User;
 
 public class AdapterUserData extends RecyclerView.Adapter<AdapterUserData.ViewHolderData> {
 
-    ArrayList<User> listUser;
+    private Context context;
+    private ArrayList<User> listUser;
+    private User user;
 
-    public AdapterUserData(ArrayList<User> listUser) {
+    public AdapterUserData(ArrayList<User> listUser, Context context) {
         this.listUser = listUser;
+        this.context = context;
     }
 
     @NonNull
@@ -48,6 +54,18 @@ public class AdapterUserData extends RecyclerView.Adapter<AdapterUserData.ViewHo
             txtId = itemView.findViewById(R.id.txtItemRecyclerId);
             txtName = itemView.findViewById(R.id.txtItemRecyclerName);
             txtPhone = itemView.findViewById(R.id.txtItemRecyclerPhone);
+
+            itemView.findViewById(R.id.btnDetailRecyclerView).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    user = listUser.get(Integer.parseInt(txtId.getText().toString()) - 1);
+                    Intent i = new Intent(context, UserDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("user", user);
+                    i.putExtras(bundle);
+                    context.startActivity(i);
+                }
+            });
         }
 
     }
